@@ -25,7 +25,7 @@ from tensorflow_probability import distributions as tfd
 import unet_utils
 
 
-class _HierarchicalCore(snt.AbstractModule):
+class _HierarchicalCore(snt.Module):
   """A U-Net encoder-decoder with a full encoder and a truncated decoder.
 
   The truncated decoder is interleaved with the hierarchical latent space and
@@ -182,7 +182,7 @@ class _HierarchicalCore(snt.AbstractModule):
             'used_latents': used_latents}
 
 
-class _StitchingDecoder(snt.AbstractModule):
+class _StitchingDecoder(snt.Module):
   """A module that completes the truncated U-Net decoder.
 
   Using the output of the HierarchicalCore this module fills in the missing
@@ -270,7 +270,7 @@ class _StitchingDecoder(snt.AbstractModule):
                       name='logits')(decoder_features)
 
 
-class HierarchicalProbUNet(snt.AbstractModule):
+class HierarchicalProbUNet(snt.Module):
   """A Hierarchical Probabilistic U-Net."""
 
   def __init__(self,
