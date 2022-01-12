@@ -26,7 +26,7 @@ import sonnet as snt
 import tensorflow.compat.v1 as tf
 
 
-class MovingAverage(snt.AbstractModule):
+class MovingAverage(snt.Module):
   """A thin wrapper around snt.MovingAverage.
 
   The module adds the option not to differentiate through the last element that
@@ -47,7 +47,7 @@ class MovingAverage(snt.AbstractModule):
     return self._moving_average(inputs)
 
 
-class LagrangeMultiplier(snt.AbstractModule):
+class LagrangeMultiplier(snt.Module):
   """A lagrange multiplier sonnet module."""
 
   def __init__(self,
